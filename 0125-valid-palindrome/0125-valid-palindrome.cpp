@@ -1,18 +1,16 @@
 class Solution {
 public:
-    bool isPalindrome(string s) {
-        s.erase(std::remove_if(s.begin(), s.end(),
-        [](unsigned char c) {
-            return !std::isalnum(c);
-        }), s.end());
-        transform(s.begin(), s.end(), s.begin(), ::tolower);
-        string temp = s;
-        reverse(s.begin(), s.end());
+        bool isPalindrome(string s) {
+        int left = 0, right = s.size()-1;
+        while(left < right){
+            while(!isalnum(s[left])) left++;
+            while(!isalnum(s[right])) right--;
 
-        // cout << temp << " " << s << endl;
+            if(tolower(s[left]) != tolower(s[right])) return false;
+            left++;
+            right--;
+        }
 
-        if(s==temp) return true;
-
-        return false;
+        return true;
     }
 };
