@@ -5,6 +5,7 @@ class Solution{
     void backtrack(string current,int open,int close, int n){        
         if(open == n && close == n){
             res.push_back(current);
+            return;
         }
 
         if(open < n){
