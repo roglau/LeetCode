@@ -1,7 +1,7 @@
 class Solution{
     public:
-    int sum(vector<int>& piles, int k){
-        int total = 0;
+    long long sum(vector<int>& piles, int k){
+        long long total = 0;
         for(int p : piles){
             total += (p + k - 1) / k;  
             // cout << total << endl;
@@ -18,7 +18,7 @@ class Solution{
         int answer = r;
         // cout << r << endl;
         while(l <= r){
-            int mid = (l+r)/2;
+            int mid = l + (r - l) / 2;
             // cout << l << " <- -> " << r << " = " << mid << " " << sum(piles, mid) << endl;
             if(h >= sum(piles, mid)){
                 answer = mid;
