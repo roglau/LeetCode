@@ -12,25 +12,16 @@ class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
         ListNode* curr = head;
-        ListNode* res = nullptr;
+        ListNode* prev = nullptr;
+
         while(curr){
-            // cout << "a"<< endl;
-            if(res == nullptr){
-                // cout << "msk1";
-                res = new ListNode(curr->val);
-            }else{
-                // cout << "msk2" << endl;
-                res = new ListNode(curr->val, res);
-            }
-            curr = curr->next;
+            ListNode* temp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
         }
 
-        // while(res){
-        //     cout << res->val << endl;
-        //     res = res->next;
-        // }
 
-        return res;
+        return prev;
     }
-
 };
